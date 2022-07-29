@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>asd</title>
+</head>
+<body>
+<h1>Home</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout">
+    <table>
+        <thead>
+        <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Registration date</th>
+        <th>Login date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.status}"></td>
+            <td th:text="${user.registrationDate}"></td>
+            <td th:text="${user.loginDate}"></td>
+        </tr>
+        </tbody>
+
+    </table>
+</form>
+</body>
+</html>
