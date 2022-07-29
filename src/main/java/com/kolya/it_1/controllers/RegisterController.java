@@ -24,7 +24,6 @@ public class RegisterController {
     }
 
     @GetMapping("/register")
-    @PreFilter("#hasAuthority('anonymous')")
     public String register(Model model, Principal principal) {
         model.addAttribute("user", new UserDto());
         return "register-page";

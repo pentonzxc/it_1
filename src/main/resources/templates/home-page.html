@@ -7,29 +7,43 @@
 </head>
 <body>
 <h1>Home</h1>
-<form th:action="@{/logout}" method="post">
+<form method="post" th:action="@{/logout}">
     <input type="submit" value="Logout">
-    <table>
-        <thead>
-        <tr>
+</form>
+<div class="bar-tools" id="bar-tools">
+    <h1>Bar tools</h1>
+    <button id="block">Block</button>
+    <button id="delete">Delete</button>
+    <button id="unblock">Unblock</button>
+</div>
+<div class="checkboxes">
+    <button id="all_checkbox" type="button">Select all checkboxes</button>
+    <button id="undo_all_checkbox" type="button">Undo select</button>
+</div>
+<table id="user_table" th:if="${not #lists.isEmpty(users)}">
+    <thead>
+    <tr>
         <th>Email</th>
         <th>Name</th>
         <th>Status</th>
         <th>Registration date</th>
         <th>Login date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="user : ${users}">
-            <td th:text="${user.email}"></td>
-            <td th:text="${user.name}"></td>
-            <td th:text="${user.status}"></td>
-            <td th:text="${user.registrationDate}"></td>
-            <td th:text="${user.loginDate}"></td>
-        </tr>
-        </tbody>
-
-    </table>
-</form>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user , iStat : ${users}">
+        <input th:id="box + ${iStat.index}" type="checkbox">
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.status}"></td>
+        <td th:text="${user.registrationDate}"></td>
+        <td th:text="${user.loginDate}"></td>
+    </tr>
+    </tbody>
+</table>
+<script th:inline="javascript">
+    var authenticationEmail = [[${#authentication.getName()}]];
+</script>
+<script src="/script.js"></script>
 </body>
 </html>

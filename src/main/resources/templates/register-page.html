@@ -4,17 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
 <h1>Register</h1>
 <form th:action="@{/register}" method="post" th:object="${user}">
-<!--    <input type="text" id="email" name="email" th:value="${credits.email}"   placeholder="Email">-->
-<!--    <input type="text" id="name" name="name" th:value="${credits.name}" placeholder="Name">-->
-<!--    <input type="text" id="password" name="password" th:value="${credits.password}" placeholder="password">-->
     <input type="text" th:field="*{email}" placeholder="Email">
     <input type="text" th:field="*{name}" placeholder="Name">
     <input type="text" th:field="*{password}" placeholder="password">
     <input type="submit" value="Register user">
 </form>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

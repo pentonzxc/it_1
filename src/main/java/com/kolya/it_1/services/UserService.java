@@ -18,5 +18,13 @@ public interface UserService {
 
     void saveUser(User user);
 
+    void blockUserByEmail(String email);
+
+    void unblockUserByEmail(String email);
+
+    void deleteUserByEmail(String email);
+
+    List<User> findAllLoginUsers();
+
     Optional<User> findUserByEmail(String email);
 }
