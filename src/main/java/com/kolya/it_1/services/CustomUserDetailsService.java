@@ -1,5 +1,6 @@
 package com.kolya.it_1.services;
 
+import com.kolya.it_1.exceptions.UserNotFoundException;
 import com.kolya.it_1.mappers.UserDetailsMapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return detailsMapper.convert(userService.findUserByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User with " +
-                        email + "not found")));
+                .orElseThrow(() -> new UserNotFoundException(
+                        String.format("User with email %s doesn't exist" , email))));
     }
 }
