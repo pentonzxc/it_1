@@ -56,8 +56,7 @@
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
-            <artifactId>webjars-locator</artifactId>
-            <version>0.30</version>
+            <artifactId>webjars-locator-core</artifactId>
         </dependency>
 
         <dependency>
@@ -97,7 +96,7 @@
                     <source>9</source>
                     <target>9</target>
                     <annotationProcessorPaths>
-
+                        <addResources>true</addResources>
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>

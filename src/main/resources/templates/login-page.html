@@ -1,15 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        .mainContainer{
+            margin: auto;
+            display: block;
+            text-align: center;
+        }
+        .custom-input{
+            padding-bottom: 10px;
+        }
+        .custom-submit{
+            margin-top: 10px;
+            padding: 0px 10px;
+            width: 10%;
+        }
+        .error{
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<h1>Login page</h1>
-<form th:action="@{/perform-login}" method="post">
-    <input type="text" name="email" id="email" placeholder="Email">
-    <input type="password" name="password" id="password" placeholder="Password">
-    <input type="submit" value="Login">
+<div class="mainContainer">
+<form th:action="@{/perform-login}" class="custom-form"  method="post">
+    <h1>Login page</h1>
+    <div class="custom-input">
+        <input type="text" name="email" id="email" placeholder="Email">
+    </div>
+    <div class="custom-input">
+        <input type="password" name="password" id="password" placeholder="Password">
+    </div>
+    <span class="error" th:if="${param.error != null}">Invalid data</span>
+    <div>
+        <input type="submit" class="custom-submit" value="Login">
+    </div>
 </form>
+<form th:action="@{/register}" method="get">
+<input type="submit" class="custom-submit" value="Register">
+</form>
+</div>
 </body>
-</html>
+

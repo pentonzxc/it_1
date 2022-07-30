@@ -17,7 +17,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("users", userService.findAllLoginUsers());
+        model.addAttribute("users", userService.findAllUsers());
         return "home-page";
     }
 }

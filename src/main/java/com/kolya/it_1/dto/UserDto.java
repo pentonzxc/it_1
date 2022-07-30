@@ -1,17 +1,24 @@
 package com.kolya.it_1.dto;
 
+import com.kolya.it_1.annotations.EmailNotExist;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
 public class UserDto {
+
+    @NotEmpty
+    @EmailNotExist
     private String email;
 
+    @NotEmpty
     private String name;
 
+    @NotEmpty
     private String password;
 
     private String status;

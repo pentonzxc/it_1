@@ -4,16 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        .mainContainer{
+            margin: auto;
+            display: block;
+            text-align: center;
+        }
+        .custom-input{
+            padding-bottom: 10px;
+        }
+        .custom-submit{
+            margin-top: 10px;
+            padding: 0px 10px;
+            width: 10%;
+        }
+        .error{
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<h1>Register</h1>
-<form th:action="@{/register}" method="post" th:object="${user}">
-    <input type="text" th:field="*{email}" placeholder="Email">
-    <input type="text" th:field="*{name}" placeholder="Name">
-    <input type="text" th:field="*{password}" placeholder="password">
-    <input type="submit" value="Register user">
-</form>
+<div class="mainContainer">
+    <form th:action="@{/register}" method="post" th:object="${user}">
+        <h1>Register</h1>
+        <div class="custom-input">
+            <input type="text" th:field="*{email}" placeholder="Email">
+        </div>
+        <div class="custom-input">
+            <input type="text" th:field="*{name}" placeholder="Name">
+        </div>
+        <div class="custom-input">
+            <input type="text" th:field="*{password}" placeholder="password">
+        </div>
+        <div th:with = "emailIsExist = *{#fields.hasErrors('email') and !(#fields.allErrors().size() > 1 ? true : false)}">
+            <span class="error" th:if="${emailIsExist}">Email exist</span>
+            <span class="error" th:if="${!emailIsExist and #fields.hasErrors()}" >Data cannot be empty</span>
+        </div>
+        <div>
+            <input type="submit" class="custom-submit" value="Register user">
+        </div>
+    </form>
+    <form th:action="@{/login}" method="get">
+        <input type="submit" class="custom-submit" value="Login page">
+    </form>
+</div>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

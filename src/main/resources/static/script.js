@@ -5,7 +5,6 @@ let checkBoxes = document.querySelectorAll(`[id^="box"]`);
 let btnBlock = document.getElementById("block")
 let btnDelete = document.getElementById("delete")
 let btnUnblock = document.getElementById("unblock")
-var reloadPage = true
 
 let selectAll = (event) => {
     for (const checkBox of checkBoxes) {
@@ -23,12 +22,9 @@ let blockUsers = (event) => {
     let req = new XMLHttpRequest();
     req.open('POST', "/blockUsers");
     req.setRequestHeader('Content-Type', 'application/json');
-    let data = selectedBoxes();
-    req.send(JSON.stringify(data[0]))
+    req.send(JSON.stringify(selectedBoxes()))
     req.onload = function () {
-        if(data[1] === true) {
             document.location.reload()
-        }
     }
     undoSelect();
 }
@@ -37,8 +33,7 @@ let unblockUsers = (event) => {
     let req = new XMLHttpRequest();
     req.open('POST', "/unblockUsers");
     req.setRequestHeader('Content-Type', 'application/json');
-    let data = selectedBoxes();
-    req.send(JSON.stringify(data[0]))
+    req.send(JSON.stringify(selectedBoxes()))
     req.onload = function () {
         document.location.reload()
     }
@@ -49,28 +44,23 @@ let deleteUsers = (event) => {
     let req = new XMLHttpRequest();
     req.open('POST', "/deleteUsers");
     req.setRequestHeader('Content-Type', 'application/json');
-    let data = selectedBoxes();
-    req.send(JSON.stringify(data[0]))
+    req.send(JSON.stringify(selectedBoxes()))
     req.onload = function () {
-        if(data[1] === true) {
             document.location.reload()
-        }
     }
     undoSelect();
 }
 
 let selectedBoxes = () => {
-    reloadPage = true;
     let arr = [];
     for (const checkBox of checkBoxes) {
         if (checkBox.checked) {
             let index = parseInt(checkBox.id.slice(3, checkBox.id.length));
-            let email = table[0].rows[index + 1].firstChild.nextSibling.textContent;
-            if(email === authenticationEmail)  reloadPage = false
+            let email = table[0].rows[index + 1].firstChild.nextSibling.nextSibling.nextSibling.textContent;
             arr.push(email);
         }
     }
-    return [arr , reloadPage]
+    return arr
 }
 
 

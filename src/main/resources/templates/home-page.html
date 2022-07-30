@@ -4,43 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <title>asd</title>
+    <link rel="stylesheet" href="/user.css">
+<!--    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">-->
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+    </style>
 </head>
 <body>
-<h1>Home</h1>
-<form method="post" th:action="@{/logout}">
-    <input type="submit" value="Logout">
-</form>
-<div class="bar-tools" id="bar-tools">
-    <h1>Bar tools</h1>
-    <button id="block">Block</button>
-    <button id="delete">Delete</button>
-    <button id="unblock">Unblock</button>
+<div class="mainContainer">
+    <div class="bar-tools" id="bar-tools">
+        <h1>Bar tools</h1>
+        <button id="block">Block</button>
+        <button id="delete" >Delete</button>
+        <button id="unblock" >Unblock</button>
+    </div>
+    <div class="home-container">
+        <h1>Home</h1>
+        <form method="post"  th:action="@{/logout}">
+            <input type="submit" class="custom-button"  value="Logout">
+        </form>
+    </div>
+    <div class="checkboxes-tools">
+        <h1>Select tools</h1>
+        <button id="all_checkbox" type="button">Select all checkboxes</button>
+        <button id="undo_all_checkbox" type="button">Undo select</button>
+    </div>
+    <!--<table id="user_table" th:if="${not #lists.isEmpty(users)}">-->
+    <!--    <thead>-->
+    <!--    <tr>-->
+    <!--        <th>Email</th>-->
+    <!--        <th>Name</th>-->
+    <!--        <th>Status</th>-->
+    <!--        <th>Registration date</th>-->
+    <!--        <th>Login date</th>-->
+    <!--    </tr>-->
+    <!--    </thead>-->
+    <!--    <tbody>-->
+    <!--    <tr th:each="user , iStat : ${users}">-->
+    <!--        <input th:id="box + ${iStat.index}" type="checkbox">-->
+    <!--        <td th:text="${user.email}"></td>-->
+    <!--        <td th:text="${user.name}"></td>-->
+    <!--        <td th:text="${user.status}"></td>-->
+    <!--        <td th:text="${user.registrationDate}"></td>-->
+    <!--        <td th:text="${user.loginDate}"></td>-->
+    <!--    </tr>-->
+    <!--    </tbody>-->
+    <!--</table>-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered" id="user_table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Select</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Registration Date</th>
+                        <th scope="col">Last Login Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user , iStat : ${users}">
+                        <td>
+                            <input type="checkbox" class="custom-checkbox" th:id="box + ${iStat.index}">
+                        </td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.status}"></td>
+                        <td th:text="${user.registrationDate}"></td>
+                        <td th:text="${user.loginDate}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="checkboxes">
-    <button id="all_checkbox" type="button">Select all checkboxes</button>
-    <button id="undo_all_checkbox" type="button">Undo select</button>
-</div>
-<table id="user_table" th:if="${not #lists.isEmpty(users)}">
-    <thead>
-    <tr>
-        <th>Email</th>
-        <th>Name</th>
-        <th>Status</th>
-        <th>Registration date</th>
-        <th>Login date</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user , iStat : ${users}">
-        <input th:id="box + ${iStat.index}" type="checkbox">
-        <td th:text="${user.email}"></td>
-        <td th:text="${user.name}"></td>
-        <td th:text="${user.status}"></td>
-        <td th:text="${user.registrationDate}"></td>
-        <td th:text="${user.loginDate}"></td>
-    </tr>
-    </tbody>
-</table>
+<!--<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>-->
 <script th:inline="javascript">
     var authenticationEmail = [[${#authentication.getName()}]];
 </script>
