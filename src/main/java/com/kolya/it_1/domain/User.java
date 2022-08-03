@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(schema = "it_task1", name = "user")
+@Table(name = "user")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
