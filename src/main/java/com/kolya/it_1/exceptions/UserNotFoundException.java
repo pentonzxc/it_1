@@ -7,7 +7,7 @@ public class UserNotFoundException extends AuthenticationException {
     @Getter
     private String message;
 
-    public UserNotFoundException(){
+    public UserNotFoundException() {
         super("User not found");
     }
 

@@ -3,8 +3,6 @@ package com.kolya.it_1.services;
 import com.kolya.it_1.domain.User;
 import com.kolya.it_1.exceptions.UserNotFoundException;
 import com.kolya.it_1.repository.UserRepository;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,7 +57,7 @@ public class UserServiceImpl implements UserService {
     public void blockUserByEmail(String email) {
         User user = findUserByEmail(email).
                 orElseThrow(() -> new UserNotFoundException(
-                        String.format("User with email %s doesn't exist" , email)));
+                        String.format("User with email %s doesn't exist", email)));
         user.setStatus("BLOCKED");
         saveUser(user);
     }
@@ -68,7 +66,7 @@ public class UserServiceImpl implements UserService {
     public void unblockUserByEmail(String email) {
         User user = findUserByEmail(email).
                 orElseThrow(() -> new UserNotFoundException(
-                        String.format("User with email %s doesn't exist" , email)));
+                        String.format("User with email %s doesn't exist", email)));
         user.setStatus("ACTIVE");
         saveUser(user);
     }
@@ -77,7 +75,7 @@ public class UserServiceImpl implements UserService {
     public void deleteUserByEmail(String email) {
         User user = findUserByEmail(email).
                 orElseThrow(() -> new UserNotFoundException(
-                        String.format("User with email %s doesn't exist" , email)));
+                        String.format("User with email %s doesn't exist", email)));
         deleteUserById(user.getId());
     }
 

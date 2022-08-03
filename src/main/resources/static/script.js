@@ -23,8 +23,8 @@ let blockUsers = (event) => {
     req.open('POST', "/blockUsers");
     req.setRequestHeader('Content-Type', 'application/json');
     req.send(JSON.stringify(selectedBoxes()))
-    req.onload = function () {
-            document.location.reload()
+    req.onload = function() {
+        document.location.reload()
     }
     undoSelect();
 }
@@ -34,7 +34,7 @@ let unblockUsers = (event) => {
     req.open('POST', "/unblockUsers");
     req.setRequestHeader('Content-Type', 'application/json');
     req.send(JSON.stringify(selectedBoxes()))
-    req.onload = function () {
+    req.onload = function() {
         document.location.reload()
     }
     undoSelect();
@@ -45,8 +45,8 @@ let deleteUsers = (event) => {
     req.open('POST', "/deleteUsers");
     req.setRequestHeader('Content-Type', 'application/json');
     req.send(JSON.stringify(selectedBoxes()))
-    req.onload = function () {
-            document.location.reload()
+    req.onload = function() {
+        document.location.reload()
     }
     undoSelect();
 }

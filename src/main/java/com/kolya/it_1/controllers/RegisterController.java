@@ -4,7 +4,6 @@ import com.kolya.it_1.dto.UserDto;
 import com.kolya.it_1.mappers.CredentialsMapper;
 import com.kolya.it_1.services.UserService;
 import org.mapstruct.factory.Mappers;
-import org.springframework.security.access.prepost.PreFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.security.Principal;
 
 @Controller
 public class RegisterController {
@@ -33,8 +31,8 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String registrationUser(@ModelAttribute(name = "user") @Valid UserDto userDto,
-                                   BindingResult bindingResult , Model model) {
-        if(bindingResult.hasErrors())
+                                   BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors())
             return "register-page";
         userService.addUser(credentialsMapper.convert(userDto));
         return "redirect:/";

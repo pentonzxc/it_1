@@ -2,18 +2,13 @@ h4 {
     margin: 2rem 0rem 1rem;
     color: red;
 }
-
-
 .container {
     color: red;
     padding: 2rem 0rem;
 }
-
-
 td, th {
     vertical-align: middle;
 }
-
 .bar-tools{
     position: absolute;
     left: 1175px;
@@ -25,14 +20,11 @@ td, th {
     left: 265px;
     top: 20px
 }
-
 .home-container{
     position: absolute;
     top: 15px;
     left: 750px;
 }
-
-
 .custom-checkbox {
     width:30px;
     height:30px;
@@ -40,14 +32,11 @@ td, th {
     border-radius:5px;
     border:2px solid #555;
 }
-
 .container{
     position: absolute;
     left: 250px;
     top: 90px;
 }
-
-
 .custom-button{
     padding: 1px 28px;
 }

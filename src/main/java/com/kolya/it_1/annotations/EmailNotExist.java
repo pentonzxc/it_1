@@ -10,16 +10,15 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.PARAMETER;
 
-@Target( { FIELD, PARAMETER })
+@Target({FIELD, PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Constraint(validatedBy = EmailValidation.class)
 public @interface EmailNotExist {
-    //error message
-    public String message() default "Invalid email";
-    //represents group of constraints
-    public Class<?>[] groups() default {};
-    //represents additional information about annotation
-    public Class<? extends Payload>[] payload() default {};
+    String message() default "Invalid email";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 
 }

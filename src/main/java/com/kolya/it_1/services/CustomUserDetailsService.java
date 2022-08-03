@@ -24,6 +24,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return detailsMapper.convert(userService.findUserByEmail(email)
                 .orElseThrow(() -> new UserNotFoundException(
-                        String.format("User with email %s doesn't exist" , email))));
+                        String.format("User with email %s doesn't exist", email))));
     }
 }

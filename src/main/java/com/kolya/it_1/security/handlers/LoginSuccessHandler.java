@@ -30,7 +30,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         User user = userService.findUserByEmail(userDetails.getEmail())
                 .orElseThrow(() -> new UserNotFoundException(
-                        String.format("User with email %s doesn't exist" , userDetails.getEmail())));
+                        String.format("User with email %s doesn't exist", userDetails.getEmail())));
         user.setLoginDate(Date.from(Instant.now()));
         userService.saveUser(user);
         response.sendRedirect("/");
