@@ -96,7 +96,6 @@
                     <source>9</source>
                     <target>9</target>
                     <annotationProcessorPaths>
-                        <addResources>true</addResources>
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
