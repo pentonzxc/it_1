@@ -13,9 +13,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>it_1</name>
     <description>it_1</description>
-<!--    <properties>-->
-<!--        <java.version>11</java.version>-->
-<!--    </properties>-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -101,7 +98,6 @@
                             <artifactId>lombok</artifactId>
                             <version>1.18.24</version>
                         </path>
-                        <!-- additional annotation processor required as of Lombok 1.18.16 -->
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok-mapstruct-binding</artifactId>
@@ -119,13 +115,6 @@
                 <groupId>com.heroku.sdk</groupId>
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>3.0.3</version>
-                <configuration>
-                    <jdkVersion>11</jdkVersion>
-                    <appName>it-1</appName>
-                    <processTypes>
-                        <web>web: java -jar ./target/it_1-0.0.1-SNAPSHOT.jar</web>
-                    </processTypes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
