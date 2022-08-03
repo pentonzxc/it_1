@@ -126,6 +126,12 @@
                 <groupId>com.heroku.sdk</groupId>
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>3.0.3</version>
+                <configuration>
+                    <processTypes>
+                        <web>web: java $JAVA_OPTS -Dserver.port=8080 -Dspring.profiles.active=default -jar target/it_1-0.0.1-SNAPSHOT.jar</web>
+                    </processTypes>
+                </configuration>
+
             </plugin>
 <!--            <plugin>-->
 <!--                <artifactId>maven-assembly-plugin</artifactId>-->
