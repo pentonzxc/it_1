@@ -134,7 +134,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.package.MainClass</mainClass>
+                            <mainClass>com.kolya.it_1.It1Application</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
