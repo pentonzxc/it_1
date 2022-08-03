@@ -7,4 +7,5 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
-
+server:
+  port: 5000
